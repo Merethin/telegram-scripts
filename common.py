@@ -13,10 +13,6 @@ class Telegram:
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, separators=(',', ':'))
 
 def send_telegrams(telegrams: list[Telegram]):
-    for telegram in telegrams:
-        print(telegram.toJSON())
-
-def actual_send_telegrams(telegrams: list[Telegram]):
     url = os.getenv("RABBITMQ_URL")
     if url is None:
         print("RABBITMQ_URL not provided in the environment!", file=sys.stderr)
